@@ -6,7 +6,7 @@
 
 Python library dan CLI tool untuk menyisipkan **invisible watermark** pada citra digital menggunakan metode **DWT Spread Spectrum** (Discrete Wavelet Transform + Spread Spectrum).
 
-Watermark berupa citra biner 64x64 yang memuat nama **Muhammad Ghiffary Alfathan**, disisipkan pada sub-band LH kanal Y (YCrCb) sehingga warna foto tidak berubah. Ekstraksi bersifat **blind** — tidak memerlukan citra asli.
+Watermark berupa citra biner 64x64 yang memuat nama **Muhammad Ghiffary Alfathan**, disisipkan pada sub-band LH kanal Y (YCrCb) sehingga warna foto tidak berubah. Ekstraksi bersifat **blind** dan tidak memerlukan citra asli.
 
 ---
 
@@ -53,7 +53,7 @@ python -m dwt_watermark evaluate -i foto.jpeg -o hasil/
 ```
 encode:
   -i, --input     Path foto input (JPEG/PNG)
-  -o, --output    Path foto output (default: <input>_wm.jpg)
+  -o, --output    Path foto output (default: <input>_wm.jpeg)
   -a, --alpha     Skala penyisipan (default: 20.0)
   -s, --seed      PN seed (default: 100)
   -v, --verbose   Tampilkan info PSNR
@@ -180,5 +180,5 @@ MIT License — lihat [LICENSE](LICENSE)
 
 ## Author
 
-Muhammad Ghiffary Alfathan
+Muhammad Ghiffary Alfathan (18224084)
 Sistem dan Teknologi Informasi, Institut Teknologi Bandung
