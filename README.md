@@ -53,7 +53,7 @@ python -m dwt_watermark evaluate -i foto.jpeg -o hasil/
 ```
 encode:
   -i, --input     Path foto input (JPEG/PNG)
-  -o, --output    Path foto output (default: <input>_wm.jpg)
+  -o, --output    Path foto output (default: <input>_wm.jpeg)
   -a, --alpha     Skala penyisipan (default: 20.0)
   -s, --seed      PN seed (default: 100)
   -v, --verbose   Tampilkan info PSNR
