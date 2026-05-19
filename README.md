@@ -1,12 +1,7 @@
 # dwt-watermark
-
-![Python](https://img.shields.io/badge/python-%3E%3D3.8-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Platform](https://img.shields.io/badge/platform-linux%20%7C%20windows%20%7C%20macos-lightgrey.svg)
-
 Python library dan CLI tool untuk menyisipkan **invisible watermark** pada citra digital menggunakan metode **DWT Spread Spectrum** (Discrete Wavelet Transform + Spread Spectrum).
 
-Watermark berupa citra biner 64x64 yang memuat nama **Muhammad Ghiffary Alfathan**, disisipkan pada sub-band LH kanal Y (YCrCb) sehingga warna foto tidak berubah. Ekstraksi bersifat **blind** dan tidak memerlukan citra asli.
+Watermark berupa citra biner 64x64 yang memuat nama **Muhammad Ghiffary Alfathan**, disisipkan pada sub-band LH kanal Y (YCrCb) sehingga warna foto tidak berubah. 
 
 ---
 
@@ -46,30 +41,6 @@ python -m dwt_watermark decode -i foto_wm.jpeg
 
 ```bash
 python -m dwt_watermark evaluate -i foto.jpeg -o hasil/
-```
-
-### Opsi lengkap
-
-```
-encode:
-  -i, --input     Path foto input (JPEG/PNG)
-  -o, --output    Path foto output (default: <input>_wm.jpeg)
-  -a, --alpha     Skala penyisipan (default: 20.0)
-  -s, --seed      PN seed (default: 100)
-  -v, --verbose   Tampilkan info PSNR
-
-decode:
-  -i, --input     Path foto stego
-  -o, --output    Path output watermark PNG
-  -a, --alpha     Skala penyisipan (default: 20.0)
-  -s, --seed      PN seed (default: 100)
-  -v, --verbose   Tampilkan info shape dan bit ratio
-
-evaluate:
-  -i, --input     Path foto host
-  -o, --output    Folder output (default: hasil_evaluasi)
-  -a, --alpha     Skala penyisipan (default: 20.0)
-  -s, --seed      PN seed (default: 100)
 ```
 
 ---
