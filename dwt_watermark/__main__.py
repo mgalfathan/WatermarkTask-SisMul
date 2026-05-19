@@ -94,7 +94,7 @@ def cmd_evaluate(args):
                 dpi=150, bbox_inches='tight', facecolor='#FAFAFA')
     plt.close()
 
-    # Embed
+    # Embed & simpan stego sebagai JPEG
     encoder    = WatermarkEncoder(alpha=args.alpha, pn_seed=args.seed)
     stego      = encoder.encode(img, wm)
     psnr_embed = psnr(img, stego)
@@ -127,7 +127,7 @@ def cmd_evaluate(args):
                 dpi=150, bbox_inches='tight')
     plt.close()
 
-    # Evaluasi per QF
+    # Evaluasi robustness: re-encode ke berbagai QF JPEG
     decoder = WatermarkDecoder(alpha=args.alpha, pn_seed=args.seed)
     results = []
     wm_recs = []
@@ -223,7 +223,7 @@ def cmd_evaluate(args):
                 dpi=150, bbox_inches='tight')
     plt.close()
 
-    # Grid watermark
+    # Grid watermark hasil ekstraksi
     fig, axes = plt.subplots(2, 5, figsize=(13, 5.5), facecolor='white')
     fig.suptitle('Watermark Hasil Ekstraksi pada Berbagai QF JPEG',
                  fontsize=12, fontweight='bold')
@@ -245,8 +245,8 @@ def cmd_evaluate(args):
                 dpi=130, bbox_inches='tight', facecolor='white')
     plt.close()
 
-    print(f"\n[INFO] PSNR stego: {psnr_embed:.2f} dB")
-    print(f"[INFO] Output    : {out_dir}/")
+    print(f"\n[INFO] PSNR stego : {psnr_embed:.2f} dB")
+    print(f"[INFO] Output     : {out_dir}/")
 
 
 def main():
@@ -256,23 +256,35 @@ def main():
     )
     sub = parser.add_subparsers(dest='action')
 
+    # encode — tidak ada -w karena watermark sudah hardcoded (citra biner 64x64)
     enc = sub.add_parser('encode', help='Sisipkan watermark ke foto')
-    enc.add_argument('-i', '--input',   required=True)
-    enc.add_argument('-o', '--output',  default=None)
-    enc.add_argument('-a', '--alpha',   type=float, default=20.0)
-    enc.add_argument('-s', '--seed',    type=int,   default=100)
+    enc.add_argument('-i', '--input',   required=True,
+                     help='Path foto input (JPEG/PNG)')
+    enc.add_argument('-o', '--output',  default=None,
+                     help='Path foto output (default: <input>_wm.jpg)')
+    enc.add_argument('-a', '--alpha',   type=float, default=20.0,
+                     help='Skala penyisipan (default: 20.0)')
+    enc.add_argument('-s', '--seed',    type=int,   default=100,
+                     help='PN seed (default: 100)')
     enc.add_argument('-v', '--verbose', action='store_true')
 
+    # decode — tidak ada -l karena wm_size sudah tetap 64x64
     dec = sub.add_parser('decode', help='Ekstrak watermark dari foto')
-    dec.add_argument('-i', '--input',   required=True)
-    dec.add_argument('-o', '--output',  default=None)
+    dec.add_argument('-i', '--input',   required=True,
+                     help='Path foto stego')
+    dec.add_argument('-o', '--output',  default=None,
+                     help='Path output watermark PNG (default: <input>_wm_extracted.png)')
     dec.add_argument('-a', '--alpha',   type=float, default=20.0)
     dec.add_argument('-s', '--seed',    type=int,   default=100)
     dec.add_argument('-v', '--verbose', action='store_true')
 
-    ev = sub.add_parser('evaluate', help='Evaluasi robustness terhadap JPEG')
-    ev.add_argument('-i', '--input',   required=True)
-    ev.add_argument('-o', '--output',  default=None)
+    # evaluate — tidak ada -w, evaluasi pakai watermark biner bawaan
+    ev = sub.add_parser('evaluate',
+                        help='Evaluasi robustness watermark terhadap kompresi JPEG')
+    ev.add_argument('-i', '--input',   required=True,
+                    help='Path foto host')
+    ev.add_argument('-o', '--output',  default=None,
+                    help='Folder output (default: hasil_evaluasi)')
     ev.add_argument('-a', '--alpha',   type=float, default=20.0)
     ev.add_argument('-s', '--seed',    type=int,   default=100)
 
