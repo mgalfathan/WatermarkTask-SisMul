@@ -115,21 +115,21 @@ Foto host: 512×512 px | Alpha: 20.0 | PSNR stego: **39.91 dB**
 Watermark berupa citra biner 64×64 berisi noise acak (seed=42) dengan overlay teks
 "M.Ghiffary / Alfathan". Area teks = bit 1, sisanya = bit 0.
 
-![Watermark original](hasil/watermark_original.png)
+<img width="431" height="460" alt="watermark_original" src="https://github.com/user-attachments/assets/2984722c-e1d5-497d-bdfc-4dabc931dba7" />
 
 ### 2. Imperceptibility — Host vs Stego
 
 Stego JPEG (kanan) secara visual tidak dapat dibedakan dari host asli (kiri),
 dengan PSNR **39.91 dB** (di atas ambang 35 dB yang dianggap *invisible*).
 
-![Host vs Stego](hasil/imperceptibility.png)
+<img width="1915" height="701" alt="imperceptibility" src="https://github.com/user-attachments/assets/dfc1e739-ca1a-4b60-94b7-00daac22ef7a" />
 
 ### 3. Watermark Hasil Ekstraksi
 
 Hasil decode dari stego image, watermark dapat direkonstruksi dengan benar
 secara blind (tanpa membutuhkan host asli).
 
-![Watermark extracted](hasil/foto_wm_wm_extracted.png)
+<img width="64" height="64" alt="foto_wm_wm_extracted" src="https://github.com/user-attachments/assets/55e1d6cb-d0fe-4c98-8262-475d825f9a67" />
 
 ### 4. Tabel Robustness terhadap Kompresi JPEG
 
@@ -149,14 +149,14 @@ Breaking point: **QF <= 60**. Degradasi bersifat gradual (berbeda dari cliff tra
 PSNR menurun secara linear seiring turunnya QF, mencerminkan derajat distorsi
 yang ditambahkan oleh kompresi JPEG ke stego image.
 
-![Plot PSNR](hasil/plot_psnr.png)
+<img width="1336" height="583" alt="plot_psnr" src="https://github.com/user-attachments/assets/b5ce1de6-700b-4041-ad5a-4e1a175d7333" />
 
 ### 6. Grafik BER & NC vs Quality Factor
 
 Bit Error Rate (BER) naik dan Normalized Correlation (NC) turun seiring QF
 mengecil. Threshold robust: NC ≥ 0.85 (tercapai sampai QF=70).
 
-![Plot BER & NC](hasil/plot_ber_nc.png)
+<img width="1786" height="667" alt="plot_ber_nc" src="https://github.com/user-attachments/assets/e249f5fe-2911-42a2-b36a-066dd6ef6801" />
 
 ### 7. Visualisasi Watermark Hasil Ekstraksi per QF
 
@@ -164,7 +164,7 @@ Grid berikut menunjukkan watermark hasil ekstraksi pada berbagai level kompresi.
 Pada QF tinggi (≥70) teks "M.Ghiffary / Alfathan" masih terbaca jelas; pada
 QF ≤ 50 noise mendominasi dan watermark mulai tidak dapat dikenali.
 
-![Extracted watermarks grid](hasil/extracted_watermarks_grid.png)
+<img width="1654" height="721" alt="extracted_watermarks_grid" src="https://github.com/user-attachments/assets/6df52ecd-edd3-4736-abc1-0091807b2dc9" />
 
 ---
 
