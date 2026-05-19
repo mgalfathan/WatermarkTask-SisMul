@@ -143,6 +143,7 @@ secara blind (tanpa membutuhkan host asli).
 | <= 50 | <= 33.76 | >= 19.70 | <= 0.81 | GAGAL |
 
 Breaking point: **QF <= 60**. Degradasi bersifat gradual (berbeda dari cliff transition pada DCT-QIM).
+Note: Percobaan ini menggunakan Threshold BER di 10% untuk penentuan keberhasilan 
 
 ### 5. Grafik PSNR vs Quality Factor
 
