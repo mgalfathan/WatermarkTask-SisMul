@@ -110,6 +110,29 @@ Stego JPEG <── konversi balik YCrCb <────────+
 
 Foto host: 512×512 px | Alpha: 20.0 | PSNR stego: **39.91 dB**
 
+### 1. Watermark yang Disisipkan
+
+Watermark berupa citra biner 64×64 berisi noise acak (seed=42) dengan overlay teks
+"M.Ghiffary / Alfathan". Area teks = bit 1, sisanya = bit 0.
+
+![Watermark original](hasil/watermark_original.png)
+
+### 2. Imperceptibility — Host vs Stego
+
+Stego JPEG (kanan) secara visual tidak dapat dibedakan dari host asli (kiri),
+dengan PSNR **39.91 dB** (di atas ambang 35 dB yang dianggap *invisible*).
+
+![Host vs Stego](hasil/imperceptibility.png)
+
+### 3. Watermark Hasil Ekstraksi
+
+Hasil decode dari stego image, watermark dapat direkonstruksi dengan benar
+secara blind (tanpa membutuhkan host asli).
+
+![Watermark extracted](hasil/foto_wm_wm_extracted.png)
+
+### 4. Tabel Robustness terhadap Kompresi JPEG
+
 | QF | PSNR (dB) | BER (%) | NC | Status |
 |----|-----------|---------|----|--------|
 | 95 | 36.94 | 1.56 | 0.9844 | OK |
@@ -120,6 +143,28 @@ Foto host: 512×512 px | Alpha: 20.0 | PSNR stego: **39.91 dB**
 | <= 50 | <= 33.76 | >= 19.70 | <= 0.81 | GAGAL |
 
 Breaking point: **QF <= 60**. Degradasi bersifat gradual (berbeda dari cliff transition pada DCT-QIM).
+
+### 5. Grafik PSNR vs Quality Factor
+
+PSNR menurun secara linear seiring turunnya QF, mencerminkan derajat distorsi
+yang ditambahkan oleh kompresi JPEG ke stego image.
+
+![Plot PSNR](hasil/plot_psnr.png)
+
+### 6. Grafik BER & NC vs Quality Factor
+
+Bit Error Rate (BER) naik dan Normalized Correlation (NC) turun seiring QF
+mengecil. Threshold robust: NC ≥ 0.85 (tercapai sampai QF=70).
+
+![Plot BER & NC](hasil/plot_ber_nc.png)
+
+### 7. Visualisasi Watermark Hasil Ekstraksi per QF
+
+Grid berikut menunjukkan watermark hasil ekstraksi pada berbagai level kompresi.
+Pada QF tinggi (≥70) teks "M.Ghiffary / Alfathan" masih terbaca jelas; pada
+QF ≤ 50 noise mendominasi dan watermark mulai tidak dapat dikenali.
+
+![Extracted watermarks grid](hasil/extracted_watermarks_grid.png)
 
 ---
 
