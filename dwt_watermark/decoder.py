@@ -4,24 +4,7 @@ import pywt
 
 
 class WatermarkDecoder:
-    """
-    Mengekstraksi watermark biner dari citra stego secara blind.
-
-    Tidak memerlukan citra asli — hanya butuh pn_seed yang sama
-    dengan yang digunakan saat embedding.
-
-    Parameters
-    ----------
-    wm_size : int
-        Ukuran sisi watermark (default 64 -> matriks 64x64 = 4096 bit).
-    alpha : float
-        Skala penyisipan. Harus sama dengan nilai saat encode. Default: 20.0
-    pn_seed : int
-        Seed pseudo-noise. Harus sama dengan nilai saat encode. Default: 100
-    wavelet : str
-        Jenis wavelet. Default: 'haar'
-    """
-
+    
     def __init__(self, wm_size: int = 64, alpha: float = 20.0,
                  pn_seed: int = 100, wavelet: str = 'haar'):
         self.wm_size = wm_size
@@ -30,19 +13,6 @@ class WatermarkDecoder:
         self.wavelet = wavelet
 
     def decode(self, stego_bgr: np.ndarray) -> np.ndarray:
-        """
-        Ekstraksi watermark dari citra stego.
-
-        Parameters
-        ----------
-        stego_bgr : np.ndarray
-            Citra stego BGR (bisa sudah terkompresi JPEG).
-
-        Returns
-        -------
-        np.ndarray
-            Watermark biner uint8, shape (wm_size, wm_size). Nilai 0 atau 1.
-        """
         n_bits = self.wm_size * self.wm_size
 
         # Ambil kanal Y dari YCrCb

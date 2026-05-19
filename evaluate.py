@@ -1,12 +1,3 @@
-"""
-Skrip evaluasi robustness watermark DWT-SS terhadap kompresi JPEG.
-Menghasilkan angka dan plot yang persis sama dengan laporan.
-
-Penggunaan:
-    python evaluate.py -i foto.jpg -o hasil/
-    python evaluate.py -i foto.jpg -o hasil/ --alpha 20 --seed 100
-"""
-
 import argparse
 import os
 import sys

@@ -10,7 +10,7 @@ setup(
     description='Invisible image watermark using DWT Spread Spectrum',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/username/dwt-watermark',
+    url='https://github.com/mgalfathan/WatermarkTask-SisMul.git',
     packages=find_packages(),
     python_requires='>=3.8',
     install_requires=[

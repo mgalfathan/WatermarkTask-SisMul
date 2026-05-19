@@ -4,26 +4,6 @@ import pywt
 
 
 class WatermarkEncoder:
-    """
-    Menyisipkan watermark citra biner ke foto menggunakan DWT Spread Spectrum.
-
-    Teknik:
-    - DWT Haar level-1 pada kanal Y (luminance) dalam ruang warna YCrCb
-    - Spread Spectrum pada sub-band LH
-    - Kanal Cr dan Cb tidak dimodifikasi -> warna foto tetap terjaga
-    - Stego disimpan sebagai JPEG
-
-    Parameters
-    ----------
-    alpha : float
-        Skala penyisipan. Lebih besar = lebih robust, PSNR lebih rendah.
-        Nilai laporan: 20.0
-    pn_seed : int
-        Seed pseudo-noise sequence. Harus sama saat ekstraksi.
-        Nilai laporan: 100
-    wavelet : str
-        Jenis wavelet. Nilai laporan: 'haar'
-    """
 
     def __init__(self, alpha: float = 20.0, pn_seed: int = 100,
                  wavelet: str = 'haar'):
@@ -33,22 +13,6 @@ class WatermarkEncoder:
 
     def encode(self, host_bgr: np.ndarray,
                watermark: np.ndarray) -> np.ndarray:
-        """
-        Sisipkan watermark biner ke citra host.
-
-        Parameters
-        ----------
-        host_bgr : np.ndarray
-            Citra host BGR (output cv2.imread, sudah di-resize ke 512x512).
-        watermark : np.ndarray
-            Watermark biner uint8, shape (64, 64). Nilai 0 atau 1.
-            Gunakan create_watermark() dari dwt_watermark.watermark.
-
-        Returns
-        -------
-        np.ndarray
-            Citra stego BGR.
-        """
         H, W = host_bgr.shape[:2]
 
         # Konversi ke YCrCb, ambil kanal Y

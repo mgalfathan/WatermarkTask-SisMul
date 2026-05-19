@@ -1,11 +1,3 @@
-"""
-CLI entry point untuk dwt_watermark.
-
-Penggunaan:
-    python -m dwt_watermark encode -i foto.jpg -o foto_wm.jpg
-    python -m dwt_watermark decode -i foto_wm.jpg
-    python -m dwt_watermark evaluate -i foto.jpg -o hasil/
-"""
 
 import argparse
 import os

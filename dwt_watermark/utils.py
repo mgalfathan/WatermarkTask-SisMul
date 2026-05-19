@@ -2,7 +2,7 @@ import numpy as np
 
 
 def psnr(original: np.ndarray, modified: np.ndarray) -> float:
-    """PSNR antara dua citra (dB). Lebih tinggi = lebih baik."""
+    """PSNR antara dua citra (dB)."""
     mse = np.mean((original.astype(np.float64) - modified.astype(np.float64)) ** 2)
     return 100.0 if mse == 0 else 10.0 * np.log10(255.0 ** 2 / mse)
 
