@@ -33,19 +33,19 @@ pip install -e .
 ### Embed watermark
 
 ```bash
-python -m dwt_watermark encode -i foto.jpg -o foto_wm.jpg
+python -m dwt_watermark encode -i foto.jpeg -o foto_wm.jpeg
 ```
 
 ### Decode watermark
 
 ```bash
-python -m dwt_watermark decode -i foto_wm.jpg
+python -m dwt_watermark decode -i foto_wm.jpeg
 ```
 
 ### Evaluasi robustness terhadap JPEG
 
 ```bash
-python -m dwt_watermark evaluate -i foto.jpg -o hasil/
+python -m dwt_watermark evaluate -i foto.jpeg -o hasil/
 ```
 
 ### Opsi lengkap
@@ -82,14 +82,14 @@ evaluate:
 import cv2
 from dwt_watermark import WatermarkEncoder, create_watermark
 
-host = cv2.imread('foto.jpg')
+host = cv2.imread('foto.jpeg')
 host = cv2.resize(host, (512, 512))
 
 wm      = create_watermark()           # citra biner 64x64
 encoder = WatermarkEncoder()
 stego   = encoder.encode(host, wm)
 
-cv2.imwrite('foto_wm.jpg', stego, [cv2.IMWRITE_JPEG_QUALITY, 100])
+cv2.imwrite('foto_wm.jpeg', stego, [cv2.IMWRITE_JPEG_QUALITY, 100])
 ```
 
 ### Decode watermark
@@ -98,7 +98,7 @@ cv2.imwrite('foto_wm.jpg', stego, [cv2.IMWRITE_JPEG_QUALITY, 100])
 import cv2
 from dwt_watermark import WatermarkDecoder
 
-stego   = cv2.imread('foto_wm.jpg')
+stego   = cv2.imread('foto_wm.jpeg')
 decoder = WatermarkDecoder()
 wm_rec  = decoder.decode(stego)       # returns ndarray 64x64
 
