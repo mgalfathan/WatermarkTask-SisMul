@@ -1,5 +1,5 @@
-# dwt-watermark
-Python library dan CLI tool untuk menyisipkan **invisible watermark** pada citra digital menggunakan metode **DWT Spread Spectrum** (Discrete Wavelet Transform + Spread Spectrum).
+# DWTSS-watermark
+Python library dan CLI tool untuk menyisipkan **invisible watermark** pada citra digital menggunakan metode **DWT dengan Spread Spectrum** (Discrete Wavelet Transform + Spread Spectrum).
 
 Watermark berupa citra biner 64x64 yang memuat nama **Muhammad Ghiffary Alfathan**, disisipkan pada sub-band LH kanal Y (YCrCb) sehingga warna foto tidak berubah. 
 
